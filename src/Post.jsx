@@ -24,6 +24,7 @@ function Post ({index, title, body, likes, comments, handlePostLikes, handlePost
             handlePostComments(updatedComments, index);
             return updatedComments;
         });
+        setTypeComment(false)
     }
 
     return (
