@@ -17,6 +17,15 @@ function App () {
         ))
     }
 
+    function handlePostComments(comments, index) {
+        setData((data) => (
+            data.map((post) => (
+                (post.id === index) ? (
+                    {...post, comments: comments}
+                ) : post
+            ))
+        ))
+    }
 
     return (
         <ul>
@@ -28,6 +37,8 @@ function App () {
                     body={post.body}
                     likes={post.likes}
                     comments={post.comments}
+                    handlePostLikes={handlePostLikes}
+                    handlePostComments={handlePostComments}
                 />
             ))}
         </ul>
