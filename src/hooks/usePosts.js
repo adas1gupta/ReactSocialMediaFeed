@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 
 function usePosts(url) {
@@ -7,13 +8,18 @@ function usePosts(url) {
         async function fetchPosts() {
             const response = await fetch(url)
             const data = await response.json()
-            setPosts(data)
+            const postsWithExtras = data.map(post => ({
+                ...post,
+                likes: 0,
+                comments: []
+            }))
+            setPosts(postsWithExtras)
         }
 
         fetchPosts()
     }, [url])
 
-    return posts
+    return { posts, setPosts }
 }
 
 export default usePosts;

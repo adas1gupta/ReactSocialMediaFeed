@@ -1,14 +1,16 @@
 import React from "react";
-import createRoot from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import usePosts from "./hooks/usePosts";
 import { useState } from "react";
 import Post from "./Post";
 
 function App () {
-    const [data, setData] = useState(usePosts(url))
+    const url = "https://jsonplaceholder.typicode.com/posts"
+    const { posts, setPosts } = usePosts(url)
+    console.log(posts)
 
     function handlePostLikes(likes, index) {
-        setData((data) => (
+        setPosts((data) => (
             data.map((post) => (
                 (post.id === index) ? (
                     {...post, likes: likes}
@@ -18,7 +20,7 @@ function App () {
     }
 
     function handlePostComments(comments, index) {
-        setData((data) => (
+        setPosts((data) => (
             data.map((post) => (
                 (post.id === index) ? (
                     {...post, comments: comments}
@@ -29,7 +31,7 @@ function App () {
 
     return (
         <ul>
-            {data.map((post, index) => (
+            {posts.map((post, index) => (
                 <Post
                     key={index}
                     index={index}
