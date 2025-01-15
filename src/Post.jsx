@@ -43,7 +43,7 @@ function Post ({index, title, body, likes, comments, handlePostLikes, handlePost
                         id="comment"
                         type="text"
                         ref={commentTyped}
-                        placeholder="Leave comment...."
+                        placeholder="Leave comment and press Enter...."
                     />
                 </form>
             )}
